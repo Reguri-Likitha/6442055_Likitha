@@ -1,0 +1,204 @@
+. Why CSS? Inline vs. Internal vs. External
+Inline Style:
+<h2 style="color: red;">Upcoming Events</h2>
+
+ Internal Style:
+<head>
+  <style>
+    body {
+      background-color: #f0f0f0;
+    }
+  </style>
+</head>
+
+External Style:
+<link rel="stylesheet" href="styles.css">
+
+In styles.css:
+/* Header styles */
+#welcomeBanner {
+  background-color: #007BFF;
+  color: white;
+  padding: 10px;
+  text-align: center;
+}
+
+2. CSS Syntax and Comments
+/* Reset default padding and margin */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Style for main CTA button */
+.cta-button {
+  background-color: #007BFF;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-weight: bold;
+}
+
+3. Selectors Playground
+/* Universal selector */
+* {
+  margin: 0;
+  padding: 0;
+}
+
+/* Element selector */
+h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+/* ID selector */
+#mainHeader {
+  background-color: #333;
+  color: white;
+}
+
+/* Class selector */
+.eventCard {
+  padding: 20px;
+  border: 1px solid #ccc;
+  margin: 15px;
+}
+
+/* Grouping selector */
+h3, p {
+  color: #333;
+  font-family: sans-serif;
+}
+
+4. Color & Background Styling
+/* Use HEX and RGBA */
+body {
+  background-color: #ffffff;
+  color: rgba(0, 0, 0, 0.8);
+  background-image: url('city.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+/* Gradient header */
+section h2 {
+  background: linear-gradient(to right, #007BFF, #00BCD4);
+  color: white;
+  padding: 10px;
+}
+
+ 5. Typography: Fonts and Text
+In <head>:
+<link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+
+In styles.css:
+body {
+  font-family: 'Roboto', sans-serif;
+  line-height: 1.6;
+}
+
+/* Description section */
+.description {
+  text-align: justify;
+  text-transform: capitalize;
+  letter-spacing: 0.5px;
+}
+
+6. Link and List Styling
+nav a:link {
+  color: #007BFF;
+}
+
+nav a:hover {
+  color: #0056b3;
+}
+
+nav a:active {
+  color: red;
+}
+
+nav a:visited {
+  color: purple;
+}
+
+nav ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+nav li {
+  margin-right: 20px;
+  display: inline;
+}
+
+7. Table Styling
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  padding: 10px;
+  border: 1px solid #ddd;
+  text-align: center;
+}
+
+tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+ 8. Box Model & Layout Control
+.eventCard {
+  margin: 20px;
+  padding: 15px;
+  border: 1px solid #ccc;
+  outline: 2px dashed #888;
+}
+
+.hidden {
+  visibility: hidden;
+}
+
+.removed {
+  display: none;
+}
+
+ 9. Multiple Columns in Text
+<section class="news">
+  <h2>Community Bulletin</h2>
+  <div class="article">
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur...</p>
+  </div>
+</section>
+
+10. Responsive Web Design with Media Queries
+@media screen and (max-width: 768px) {
+  nav a {
+    display: block;
+    margin-bottom: 10px;
+  }
+
+  img {
+    width: 100%;
+  }
+
+  body {
+    font-size: 14px;
+  }
+
+  .eventCard {
+    width: 100%;
+  }
+}
+
+11. Debug and Test with DevTools and VS Code
+ Use device toolbar (Ctrl+Shift+M in DevTools) to test mobile/tablet/desktop views.
+
+ Use "Elements" tab to try CSS changes live.
+
+ Console tab helps debug JS issues.
+
+ Network tab to confirm styles.css is loading

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>jQuery Event Example</title>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <style>
+    .event-card {
+      display: none;
+      padding: 10px;
+      margin: 10px 0;
+      border: 1px solid #ccc;
+    }
+  </style>
+</head>
+<body>
+
+  <button id="registerBtn">Toggle Event Cards</button>
+
+  <div class="event-card">Event 1: Hackathon</div>
+  <div class="event-card">Event 2: Workshop</div>
+  <div class="event-card">Event 3: Conference</div>
+
+  <script>
+    $('#registerBtn').click(() => {
+      $('.event-card').fadeToggle(500);  // fadeIn/fadeOut toggle
+    });
+  </script>
+
+</body>
+</html>

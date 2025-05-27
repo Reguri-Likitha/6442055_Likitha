@@ -1,0 +1,270 @@
+1. Setting Up Bootstrap 5
+Exercise 1.1: Link via CDN
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Setup</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+  <h1 class="text-center">Welcome to Bootstrap 5</h1>
+</body>
+</html>
+
+Exercise 1.2: Use local files
+<!-- Assuming Bootstrap is downloaded in css/ and js/ folders -->
+<link href="css/bootstrap.min.css" rel="stylesheet">
+<script src="js/bootstrap.bundle.min.js"></script>
+
+ 2. Bootstrap Structure and JS
+Exercise 2.1: Folder Explanation
+css/ → Contains compiled Bootstrap CSS files.
+
+js/ → Contains JavaScript plugins (dropdowns, modals, etc.).
+
+icons/ → Optional Bootstrap Icons package.
+
+Exercise 2.2: JS Plugin Usage
+<script src="js/bootstrap.bundle.min.js"></script>
+
+3. Responsive Grid Layout
+Exercise 3.1
+<div class="container">
+  <div class="row">
+    <div class="col-12 col-md-6 col-lg-4 bg-light border">Column 1</div>
+    <div class="col-12 col-md-6 col-lg-4 bg-light border">Column 2</div>
+    <div class="col-12 col-md-6 col-lg-4 bg-light border">Column 3</div>
+  </div>
+</div>
+
+Exercise 3.2
+Use .container, .row, .col-* for responsiveness (as above).
+
+4. Column Layouts
+Exercise 4.1
+<div class="container">
+  <div class="row">
+    <div class="col-md-3 bg-secondary text-white">Sidebar</div>
+    <div class="col-md-9 bg-light">Main Content</div>
+  </div>
+</div>
+
+Exercise 4.2
+<div class="row">
+  <div class="col-sm-3 bg-info">1</div>
+  <div class="col-sm-3 bg-warning">2</div>
+  <div class="col-sm-3 bg-success">3</div>
+  <div class="col-sm-3 bg-danger">4</div>
+</div>
+
+5. Alignment and Reordering
+Exercise 5.1
+<div class="row justify-content-center align-items-center" style="height: 200px;">
+  <div class="col-6 text-center bg-light">Centered</div>
+</div>
+
+Exercise 5.2
+<div class="row">
+  <div class="col-md-6 order-md-2 bg-info">First on small, second on desktop</div>
+  <div class="col-md-6 order-md-1 bg-warning">Second on small, first on desktop</div>
+</div>
+
+6. Responsive Flexbox Utilities
+Exercise 6.1
+<div class="d-flex flex-column flex-md-row bg-light p-3">
+  <div class="p-2">Home</div>
+  <div class="p-2">Events</div>
+  <div class="p-2">Contact</div>
+</div>
+
+Exercise 6.2
+<div class="card d-flex flex-row justify-content-between align-items-center p-3">
+  <div>Title</div>
+  <button class="btn btn-primary">Action</button>
+</div>
+
+ 7. Typography
+Exercise 7.1
+<h1 class="display-1">Display Heading</h1>
+<p class="lead">Lead paragraph</p>
+<p class="text-muted fw-bold">Muted and Bold</p>
+
+Exercise 7.2
+<p class="text-uppercase">Uppercase text</p>
+<p class="text-lowercase">LOWERCASE TEXT</p>
+<p class="text-capitalize">capitalize each word</p>
+
+8. Forms
+Exercise 8.1
+<form>
+  <input type="text" class="form-control mb-3" placeholder="Full Name">
+  <div class="input-group mb-3">
+    <span class="input-group-text">@</span>
+    <input type="email" class="form-control" placeholder="Email">
+  </div>
+  <div class="form-check">
+    <input class="form-check-input" type="checkbox" id="subscribe">
+    <label class="form-check-label" for="subscribe">Subscribe</label>
+  </div>
+</form>
+
+Exercise 8.2
+<form>
+  <div class="form-floating mb-3">
+    <input type="email" class="form-control" id="floatingEmail" placeholder="Email">
+    <label for="floatingEmail">Email address</label>
+  </div>
+  <div class="form-floating">
+    <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
+    <label for="floatingPassword">Password</label>
+  </div>
+</form>
+
+9. Buttons
+Exercise 9.1
+<button class="btn btn-primary">Primary</button>
+<button class="btn btn-secondary">Secondary</button>
+<button class="btn btn-outline-danger">Outline Danger</button>
+
+Exercise 9.2
+<div class="btn-group" role="group">
+  <input type="checkbox" class="btn-check" id="btn1">
+  <label class="btn btn-outline-success" for="btn1">Option 1</label>
+
+  <input type="checkbox" class="btn-check" id="btn2">
+  <label class="btn btn-outline-success" for="btn2">Option 2</label>
+</div>
+
+10. Navbars and Navigation
+Exercise 10.1
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" href="#">Portal</a>
+  <div class="collapse navbar-collapse">
+    <ul class="navbar-nav me-auto">
+      <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
+      <li class="nav-item"><a class="nav-link" href="#">Events</a></li>
+    </ul>
+    <form class="d-flex">
+      <input class="form-control me-2" placeholder="Search">
+      <button class="btn btn-outline-light">Search</button>
+    </form>
+  </div>
+</nav>
+
+Exercise 10.2
+<ul class="nav nav-tabs">
+  <li class="nav-item">
+    <a class="nav-link active" href="#">Tab 1</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="#">Tab 2</a>
+  </li>
+</ul>
+
+11. Cards and Media
+Exercise 11.1
+<div class="card" style="width: 18rem;">
+  <img src="avatar.jpg" class="card-img-top" alt="Profile">
+  <div class="card-body">
+    <h5 class="card-title">John Doe</h5>
+    <p class="card-text">Organizer</p>
+  </div>
+</div>
+
+Exercise 11.2
+<div class="d-flex align-items-start">
+  <img src="icon.png" width="64" class="me-3" alt="...">
+  <div>
+    <h5>Media Title</h5>
+    <p>Media content description here.</p>
+  </div>
+</div>
+
+12. Spacing Utilities
+Exercise 12.1
+<div class="m-3 p-2 bg-light">Box with margin and padding</div>
+
+Exercise 12.2
+<div class="container py-5">
+  <div class="row text-center">
+    <div class="col bg-light m-2 p-4">₹199/month</div>
+    <div class="col bg-light m-2 p-4">₹299/month</div>
+  </div>
+</div>
+
+13. Colors and Backgrounds
+Exercise 13.1
+<div class="bg-primary text-white p-3">Dashboard</div>
+<div class="bg-warning text-dark p-3">Alert</div>
+
+Exercise 13.2
+<div class="bg-dark bg-gradient text-white p-5 text-center">Gradient Background</div>
+
+14. Display and Visibility
+Exercise 14.1
+<div class="d-none d-md-block">Visible on md and larger</div>
+
+Exercise 14.2
+<aside class="d-none d-md-block bg-secondary text-white p-3">Sidebar</aside>
+
+15. Borders, Shadows, Corners
+Exercise 15.1
+<img src="avatar.jpg" class="border border-primary border-3 rounded-circle" width="100">
+
+Exercise 15.2
+<div class="card shadow-lg rounded-pill p-3">Styled Card</div>
+
+16. Positioning
+Exercise 16.1
+<footer class="bg-dark text-white text-center p-2 position-fixed bottom-0 w-100">
+  Fixed Footer
+</footer>
+
+Exercise 16.2
+<div class="position-relative">
+  <img src="event.jpg" class="w-100">
+  <span class="position-absolute top-0 start-100 translate-middle badge bg-danger">New</span>
+</div>
+
+17. Bootstrap Icons
+Exercise 17.1
+<!-- Add in <head> -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+
+<footer>
+  <i class="bi bi-facebook"></i>
+  <i class="bi bi-twitter"></i>
+</footer>
+
+Exercise 17.2
+<button class="btn btn-outline-primary"><i class="bi bi-pencil"></i></button>
+
+18. Bootstrap JS Plugins
+Exercise 18.1: Modal
+<button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Open Modal</button>
+<div class="modal fade" id="exampleModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header"><h5 class="modal-title">Modal Title</h5></div>
+      <div class="modal-body">Hello World</div>
+      <div class="modal-footer"><button class="btn btn-secondary" data-bs-dismiss="modal">Close</button></div>
+    </div>
+  </div>
+</div>
+
+Exercise 18.2: Accordion
+<div class="accordion" id="accordionExample">
+  <div class="accordion-item">
+    <h2 class="accordion-header"><button class="accordion-button" data-bs-toggle="collapse" data-bs-target="#collapseOne">Accordion 1</button></h2>
+    <div id="collapseOne" class="accordion-collapse collapse show"><div class="accordion-body">Content 1</div></div>
+  </div>
+</div>
+
+19. Customization with Sass
+Exercise 19.1
+npm install bootstrap
+
+Exercise 19.2: Modify _variables.scss
+$primary: #0d6efd;
+$border-radius: 0.5rem;
+@import "bootstrap";

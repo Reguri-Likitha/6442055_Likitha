@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Event Object Modeling</title>
+    <script>
+        // Constructor function for Event
+        function Event(name, date, seats, category) {
+            this.name = name;
+            this.date = date;
+            this.seats = seats;
+            this.category = category;
+        }
+
+        // Add checkAvailability() to the prototype
+        Event.prototype.checkAvailability = function () {
+            return this.seats > 0 ? "Seats available" : "Sold out";
+        };
+
+        // Create event instances
+        const event1 = new Event("Startup Pitch", "2025-06-18", 5, "Business");
+        const event2 = new Event("Art Exhibition", "2025-07-10", 0, "Culture");
+
+        // Log each event's keys and values
+        [event1, event2].forEach(event => {
+            console.log(`\nEvent: ${event.name}`);
+            console.log("Details:");
+            for (const [key, value] of Object.entries(event)) {
+                console.log(`${key}: ${value}`);
+            }
+            console.log("Availability:", event.checkAvailability());
+        });
+    </script>
+</head>
+<body>
+    <h1>Open the console to see event objects and availability</h1>
+</body>
+</html>

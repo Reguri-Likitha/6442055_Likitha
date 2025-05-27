@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Event Operations</title>
+    <script>
+        // Event storage
+        const events = [];
+
+        // Function to add an event
+        function addEvent(name, date, seats, category) {
+            events.push({ name, date, seats, category });
+        }
+
+        // Closure to track total registrations per category
+        function createCategoryTracker() {
+            const totals = {};
+            return function register(event) {
+                if (!totals[event.category]) {
+                    totals[event.category] = 0;
+                }
+                if (event.seats > 0) {
+                    event.seats--;
+                    totals[event.category]++;
+                    console.log(`Registered for ${event.name}. Remaining: ${event.seats}`);
+                } else {
+                    console.log(`No seats left for ${event.name}`);
+                }
+                console.log(`Total registrations in ${event.category}: ${totals[event.category]}`);
+            };
+        }
+
+        const registerUser = createCategoryTracker();
+
+        // Higher-order function to filter events by a dynamic callback
+        function filterEvents(callback) {
+            return events.filter(callback);
+        }
+
+        // Predefined filter by category
+        function filterEventsByCategory(category) {
+            return filterEvents(event => event.category === category);
+        }
+
+        // Sample usage
+        addEvent("AI Workshop", "2025-06-10", 3, "Tech");
+        addEvent("Music Fest", "2025-07-05", 2, "Entertainment");
+        addEvent("Code Sprint", "2025-06-20", 1, "Tech");
+
+        console.log("Tech Events:");
+        const techEvents = filterEventsByCategory("Tech");
+        techEvents.forEach(e => console.log(`- ${e.name} (${e.seats} seats)`));
+
+        console.log("\nRegistering users...");
+        registerUser(techEvents[0]);
+        registerUser(techEvents[0]);
+        registerUser(techEvents[1]); // another tech event
+
+        console.log("\nSearch for events in July:");
+        const julyEvents = filterEvents(e => e.date.startsWith("2025-07"));
+        julyEvents.forEach(e => console.log(`- ${e.name}`));
+    </script>
+</head>
+<body>
+    <h1>Open the console to see event operations and logs</h1>
+</body>
+</html>

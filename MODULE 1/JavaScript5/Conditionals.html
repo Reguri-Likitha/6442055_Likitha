@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Event Listings</title>
+    <script>
+        // Sample event list
+        const events = [
+            { name: "Community Meetup", date: "2025-06-20", seats: 10 },
+            { name: "Tech Talk", date: "2025-05-10", seats: 5 },
+            { name: "Hackathon", date: "2025-07-01", seats: 0 }
+        ];
+
+        // Get today's date
+        const today = new Date();
+
+        // Display only valid events (upcoming with available seats)
+        console.log("Available Events:");
+        events.forEach(event => {
+            const eventDate = new Date(event.date);
+            if (eventDate > today && event.seats > 0) {
+                console.log(`- ${event.name} on ${event.date} (${event.seats} seats available)`);
+                // Try registering for the event
+                try {
+                    if (event.seats <= 0) {
+                        throw new Error("No seats available.");
+                    }
+                    event.seats--; // simulate registration
+                    console.log(`Registered for ${event.name}. Seats left: ${event.seats}`);
+                } catch (error) {
+                    console.error(`Error registering for ${event.name}: ${error.message}`);
+                }
+            } else {
+                console.log(`(Skipped) ${event.name} — Past or full.`);
+            }
+        });
+    </script>
+</head>
+<body>
+    <h1>Check the console for event listings and registration status</h1>
+</body>
+</html>

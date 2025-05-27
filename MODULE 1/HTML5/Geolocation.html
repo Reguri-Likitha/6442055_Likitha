@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Find Nearby Events</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 2em;
+      background-color: #eef2f3;
+      text-align: center;
+    }
+
+    button {
+      padding: 1em 2em;
+      font-size: 1rem;
+      background-color: #007BFF;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+
+    #output {
+      margin-top: 2em;
+      font-size: 1.1rem;
+      color: #333;
+    }
+
+    .error {
+      color: red;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Find Nearby Events</h2>
+
+  <button onclick="getLocation()">Find Nearby Events</button>
+
+  <div id="output"></div>
+
+  <script>
+    function getLocation() {
+      const output = document.getElementById("output");
+
+      if (!navigator.geolocation) {
+        output.innerHTML = "<p class='error'>Geolocation is not supported by your browser.</p>";
+        return;
+      }
+
+      output.textContent = "Locating…";
+
+      navigator.geolocation.getCurrentPosition(
+        // Success Callback
+        function (position) {
+          const lat = position.coords.latitude;
+          const lon = position.coords.longitude;
+          output.innerHTML = `<p>Your location:</p><p><strong>Latitude:</strong> ${lat}<br><strong>Longitude:</strong> ${lon}</p>`;
+        },
+        // Error Callback
+        function (error) {
+          switch (error.code) {
+            case error.PERMISSION_DENIED:
+              output.innerHTML = "<p class='error'>Permission denied. Please allow location access.</p>";
+              break;
+            case error.POSITION_UNAVAILABLE:
+              output.innerHTML = "<p class='error'>Location information is unavailable.</p>";
+              break;
+            case error.TIMEOUT:
+              output.innerHTML = "<p class='error'>Location request timed out. Try again.</p>";
+              break;
+            default:
+              output.innerHTML = "<p class='error'>An unknown error occurred.</p>";
+              break;
+          }
+        },
+        // Options
+        {
+          enableHighAccuracy: true,
+          timeout: 10000, // 10 seconds
+          maximumAge: 0    // Do not use cached location
+        }
+      );
+    }
+  </script>
+
+</body>
+</html>

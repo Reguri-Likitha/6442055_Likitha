@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Event Promo Video</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 2em;
+      background-color: #f4f4f4;
+    }
+
+    h2 {
+      color: #333;
+      text-align: center;
+    }
+
+    video {
+      display: block;
+      margin: 1em auto;
+      border: 4px solid #007BFF;
+      border-radius: 8px;
+      max-width: 600px;
+      width: 100%;
+    }
+
+    #videoMessage {
+      text-align: center;
+      font-weight: bold;
+      color: green;
+      margin-bottom: 2em;
+    }
+
+    form {
+      max-width: 500px;
+      margin: 2em auto;
+      background-color: white;
+      padding: 2em;
+      border-radius: 8px;
+      box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 0.8em;
+      margin-top: 0.5em;
+      margin-bottom: 1em;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+
+    label {
+      font-weight: bold;
+    }
+
+    button {
+      padding: 0.8em 1.5em;
+      background-color: #28a745;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #218838;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>You're Invited to Our Community Event!</h2>
+
+  <!-- Video Element with oncanplay -->
+  <div id="videoMessage"></div>
+  <video id="promoVideo" controls oncanplay="showVideoReadyMessage()">
+    <source src="promo.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+
+  <!-- Simple Form -->
+  <form id="feedbackForm">
+    <h3>Leave a Quick Message</h3>
+    <label for="name">Name:</label>
+    <input type="text" id="name" placeholder="Your name">
+
+    <label for="feedback">Feedback:</label>
+    <textarea id="feedback" rows="4" placeholder="Your thoughts..."></textarea>
+
+    <button type="submit">Send</button>
+  </form>
+
+  <script>
+    // Display message when video is ready
+    function showVideoReadyMessage() {
+      document.getElementById("videoMessage").textContent = "🎥 Video ready to play!";
+    }
+
+    // Warn users if they try to leave with unfilled form
+    window.onbeforeunload = function () {
+      const name = document.getElementById("name").value;
+      const feedback = document.getElementById("feedback").value;
+
+      if (name || feedback) {
+        return "You have unsaved changes. Are you sure you want to leave?";
+      }
+    };
+
+    // Optional: prevent default form submission for demo
+    document.getElementById("feedbackForm").addEventListener("submit", function (e) {
+      e.preventDefault();
+      alert("Thank you for your feedback!");
+      window.onbeforeunload = null; // allow safe exit after submission
+    });
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Debugging Practice</title>
+  <style>
+    /* Styles you can inspect and modify */
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f0f0;
+      padding: 2em;
+      text-align: center;
+    }
+
+    #welcome {
+      background-color: lightblue;
+      padding: 1em;
+      border-radius: 8px;
+      margin-bottom: 2em;
+      font-size: 1.5rem;
+      color: #333;
+    }
+
+    button {
+      padding: 0.7em 1.2em;
+      font-size: 1rem;
+      border: none;
+      border-radius: 5px;
+      background-color: #007bff;
+      color: white;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+
+  <div id="welcome">Welcome to the Debugging Practice!</div>
+
+  <button id="testButton">Click me</button>
+
+  <script>
+    console.log("Script started");
+
+    const btn = document.getElementById('testButton');
+
+    btn.addEventListener('click', () => {
+      console.log("Button clicked");
+
+      // Add a breakpoint on the next line to inspect variables
+      const result = calculateSum(5, 10);
+      console.log("Result is", result);
+
+      alert("The sum is " + result);
+    });
+
+    function calculateSum(a, b) {
+      console.log("Calculating sum of", a, "and", b);
+      let sum = a + b;
+      return sum;
+    }
+  </script>
+
+</body>
+</html>

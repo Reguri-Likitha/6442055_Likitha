@@ -1,0 +1,11 @@
+const events = [
+  { id: 1, title: 'Hackathon', date: '2025-06-01' },
+  { id: 2, title: 'Exam Week', date: '2025-04-15' },
+  { id: 3, title: 'Workshop', date: '2025-07-10' },
+];
+
+const getUpcomingEvents = (events = []) => [...events].filter(({ date }) => new Date(date) > new Date());
+
+const upcomingEvents = getUpcomingEvents(events);
+
+upcomingEvents.forEach(({ title, date }) => console.log(`${title} - ${date}`));

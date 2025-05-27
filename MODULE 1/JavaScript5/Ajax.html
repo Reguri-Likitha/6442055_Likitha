@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>AJAX Registration with Fetch</title>
+  <style>
+    #message {
+      margin-top: 15px;
+      font-weight: bold;
+    }
+    #message.success {
+      color: green;
+    }
+    #message.error {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Register for an Event (AJAX)</h1>
+
+  <form id="registrationForm">
+    <label>
+      Name:
+      <input type="text" name="name" required />
+    </label><br />
+    <label>
+      Email:
+      <input type="email" name="email" required />
+    </label><br />
+    <label>
+      Event:
+      <select name="event" required>
+        <option value="">-- Select an Event --</option>
+        <option value="Hackathon">Hackathon</option>
+        <option value="Workshop">Workshop</option>
+        <option value="Conference">Conference</option>
+      </select>
+    </label><br />
+    <button type="submit">Submit</button>
+  </form>
+
+  <div id="message"></div>
+
+  <script>
+    const form = document.getElementById('registrationForm');
+    const messageDiv = document.getElementById('message');
+
+    form.addEventListener('submit', function(event) {
+      event.preventDefault();
+      messageDiv.textContent = '';
+      messageDiv.className = '';
+
+      const formData = {
+        name: form.elements.name.value.trim(),
+        email: form.elements.email.value.trim(),
+        event: form.elements.event.value,
+      };
+
+      // Simple client-side validation
+      if (!formData.name || !formData.email || !formData.event) {
+        messageDiv.textContent = 'Please fill all fields.';
+        messageDiv.className = 'error';
+        return;
+      }
+
+      // Simulate API call with setTimeout
+      messageDiv.textContent = 'Submitting...';
+      messageDiv.className = '';
+
+      setTimeout(() => {
+        // Mock POST to JSONPlaceholder API (doesn't actually store data)
+        fetch('https://jsonplaceholder.typicode.com/posts', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(formData)
+        })
+        .then(response => {
+          if (!response.ok) throw new Error('Network response was not OK');
+          return response.json();
+        })
+        .then(data => {
+          messageDiv.textContent = 'Registration successful! 🎉';
+          messageDiv.className = 'success';
+          form.reset();
+          console.log('Server response:', data);
+        })
+        .catch(error => {
+          messageDiv.textContent = 'Registration failed. Please try again.';
+          messageDiv.className = 'error';
+          console.error('Fetch error:', error);
+        });
+      }, 1500);  // 1.5 seconds delay to simulate backend latency
+    });
+  </script>
+
+</body>
+</html>

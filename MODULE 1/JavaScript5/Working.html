@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Event Registration Form</title>
+  <style>
+    .error {
+      color: red;
+      font-size: 0.9em;
+      margin-top: 4px;
+    }
+    input, select {
+      display: block;
+      margin-bottom: 10px;
+    }
+    label {
+      margin-top: 10px;
+      display: block;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Register for an Event</h1>
+
+  <form id="registrationForm" novalidate>
+    <label>
+      Name:
+      <input type="text" name="name" />
+      <div class="error" id="nameError"></div>
+    </label>
+
+    <label>
+      Email:
+      <input type="email" name="email" />
+      <div class="error" id="emailError"></div>
+    </label>
+
+    <label>
+      Select Event:
+      <select name="event">
+        <option value="">-- Select an Event --</option>
+        <option value="Hackathon">Hackathon</option>
+        <option value="Workshop">Workshop</option>
+        <option value="Conference">Conference</option>
+      </select>
+      <div class="error" id="eventError"></div>
+    </label>
+
+    <button type="submit">Submit</button>
+  </form>
+
+  <script>
+    const form = document.getElementById('registrationForm');
+
+    form.addEventListener('submit', function(event) {
+      event.preventDefault(); // Prevent default submit behavior
+
+      // Clear previous errors
+      ['nameError', 'emailError', 'eventError'].forEach(id => {
+        document.getElementById(id).textContent = '';
+      });
+
+      const { name, email, event: selectedEvent } = form.elements;
+
+      let isValid = true;
+
+      // Validate name
+      if (!name.value.trim()) {
+        document.getElementById('nameError').textContent = 'Name is required.';
+        isValid = false;
+      }
+
+      // Validate email (simple regex)
+      const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!email.value.trim()) {
+        document.getElementById('emailError').textContent = 'Email is required.';
+        isValid = false;
+      } else if (!emailPattern.test(email.value.trim())) {
+        document.getElementById('emailError').textContent = 'Please enter a valid email.';
+        isValid = false;
+      }
+
+      // Validate event selection
+      if (!selectedEvent.value) {
+        document.getElementById('eventError').textContent = 'Please select an event.';
+        isValid = false;
+      }
+
+      if (isValid) {
+        alert(`Thank you for registering, ${name.value}! You signed up for the ${selectedEvent.value}.`);
+        form.reset();
+      }
+    });
+  </script>
+
+</body>
+</html>

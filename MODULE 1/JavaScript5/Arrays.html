@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Community Events</title>
+    <script>
+        // Array to hold all community events
+        const communityEvents = [];
+
+        // Add new events using .push()
+        communityEvents.push(
+            { name: "Workshop on Baking", category: "Food" },
+            { name: "Live Music Night", category: "Music" },
+            { name: "Guitar Jam", category: "Music" },
+            { name: "AI Conference", category: "Tech" }
+        );
+
+        // Filter only music events
+        const musicEvents = communityEvents.filter(event => event.category === "Music");
+
+        // Format events into display cards using .map()
+        const eventCards = communityEvents.map(event => `Event: ${event.name} [${event.category}]`);
+
+        // Output
+        console.log("All Events:");
+        eventCards.forEach(card => console.log(card));
+
+        console.log("\nMusic Events:");
+        musicEvents.forEach(event => console.log(`🎵 ${event.name}`));
+    </script>
+</head>
+<body>
+    <h1>Check the console to view event listings and filters</h1>
+</body>
+</html>
